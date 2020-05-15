@@ -1,5 +1,8 @@
 // pages/components/view/pages/arc-popup/index.js
-import navConfig from './popup-nav.js';
+import {
+  navConfig,
+  avartarList
+} from './popup-nav.js';
 
 Page({
 
@@ -8,8 +11,17 @@ Page({
    */
   data: {
     navConfig: navConfig,
-    currentConf: {
-
+    avartarList: avartarList,
+    currentConfig: {
+      show: false,
+      transition: true,
+      zIndex: 99,
+      locked: false,
+      direction: "bottom",
+      arcRadius: 18,
+      maxHeight: 600,
+      minHeight: 200,
+      opacity: 0.4
     }
   },
 
@@ -17,8 +29,9 @@ Page({
   onShowPopupTap(e) {
     const type = e.currentTarget.dataset.type
     const config = this.data.navConfig[type].config
+    config.show = true
     this.setData({
-      currentConf: config,
+      currentConfig: config,
       type
     })
   },
@@ -26,9 +39,9 @@ Page({
   // 隐藏Popup
   onHidePopupTap() {
     const type = this.data.type
-    this.data.currentConf.show = false
+    this.data.currentConfig.show = false
     this.setData({
-      currentConf: this.data.currentConf
+      currentConfig: this.data.currentConfig
     })
 
     if (type === 3) {
@@ -42,7 +55,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**

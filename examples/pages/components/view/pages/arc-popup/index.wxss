@@ -1,4 +1,5 @@
 /* pages/components/view/pages/arc-popup/index.wxss */
+
 .buttun-wrapper {
   display: flex;
   flex-direction: row;
@@ -55,8 +56,8 @@
   justify-content: center;
 }
 
-.top{
-    width: 100%;
+.top {
+  width: 100%;
   background: #fff;
   height: 300rpx;
   overflow: hidden;
@@ -90,4 +91,133 @@
   margin: 50rpx auto;
   line-height: 72rpx;
   text-align: center;
+}
+
+.popup-demo {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-demo-top {
+  display: flex;
+  align-items: center;
+}
+
+.popup-demo-top-image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+
+.popup-demo-desc {
+  font-size: 33rpx;
+  font-weight: 500;
+  margin-top: 30rpx;
+}
+
+.popup-demo-info {
+  display: flex;
+  padding: 15rpx 0;
+  margin-top: 30rpx;
+  border-top: 2rpx solid #eee;
+  border-bottom: 2rpx solid #eee;
+}
+
+.popup-demo-info-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.popup-demo-info-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 30rpx;
+  width: 200rpx;
+  height: 100rpx;
+}
+
+.popup-demo-info-name {
+  font-size: 33rpx;
+}
+
+.popup-demo-info-desc {
+  color: #555;
+}
+
+.popup-demo-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 80rpx;
+}
+
+.l-header-class {}
+
+.header-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  justify-content: space-between;
+}
+
+.popup-header-demo {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-header-desc {
+  line-height: 50rpx;
+  font-size: 25rpx;
+  color: #bbb;
+}
+
+.popup-scroll-view {
+  white-space: nowrap;
+  margin-top: 30rpx;
+  width: 100%;
+  height: 180rpx;
+}
+
+.popup-scroll-list {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.popup-avatar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 30rpx;
+  width: 150rpx;
+  height: 100%;
+  color: #333;
+}
+
+.popup-avatar-image {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+}
+
+.popup-header-line {
+  margin-top: 50rpx;
+  width: 100%;
+  height: 2rpx;
+  background-color: #eee;
+}
+
+.popup-header-title {
+  margin-top: 30rpx;
+  font-size: 35rpx;
+}
+
+.popup-header-contet-desc {
+  margin-top: 30rpx;
+  color: #333;
 }

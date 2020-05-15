@@ -1,14 +1,22 @@
 import validator from '../behaviors/validator';
 import zIndex from '../behaviors/zIndex';
+import nodeUtil from '../core/utils/node-util';
+import dataUtil from '../core/utils/data-util'
 const detail = true;
-const option = { bubbles: true, composed: true };
+const option = {
+  bubbles: true,
+  composed: true
+};
 
 Component({
   /**
    * 组件的属性列表
    */
   behaviors: [zIndex, validator],
-  externalClasses: ['l-class', 'l-panel-class', 'l-bg-class'],
+  externalClasses: ['l-class', 'l-panel-class', 'l-bg-class', 'l-header-class'],
+  options: {
+    multipleSlots: true // 在组件定义时的选项中启用多slot支持
+  },
   properties: {
     // 显示与隐藏
     show: {
@@ -50,6 +58,11 @@ Component({
       type: String,
       options: ['top', 'bottom'],
       value: 'bottom'
+    },
+    // header是否吸顶
+    headerFixed: {
+      type: Boolean,
+      value: true
     }
   },
 
@@ -59,7 +72,8 @@ Component({
   data: {
     _arcRadiusTop: 12,
     _ardRadiusBottom: 18,
-    arcStyle: ''
+    arcStyle: '',
+    showHeaderBoxShadow: false
   },
 
   /**
@@ -102,7 +116,9 @@ Component({
           tranistion = true,
           direction = 'bottom',
           locked = false
-        } = { ...options };
+        } = {
+          ...options
+        };
         this.setData({
           zIndex,
           tranistion,
@@ -123,7 +139,7 @@ Component({
       const ardRadiusBottom = this.data._ardRadiusBottom
       const maxHeight = this.properties.maxHeight
       const minHeight = this.properties.minHeight
-      const style = `
+      const arcStyle = `
         border-bottom-left-radius:${direction === 'top' ? arcRadiusTop : 0}rpx;
         border-bottom-right-radius:${direction === 'top' ? arcRadiusTop : 0}rpx;
         border-top-left-radius:${direction === 'bottom' ? ardRadiusBottom : 0}rpx;
@@ -132,7 +148,7 @@ Component({
         min-height:${minHeight}rpx;
       `
       this.setData({
-        arcStyle: style
+        arcStyle,
       })
     },
     onArcPopupTap() {
@@ -144,6 +160,26 @@ Component({
           show: false
         })
       }
+    },
+    async bindscroll(event) {
+      const headerRect = await nodeUtil.getNodeRectFromComponent(this, '.header-popup')
+
+      if (headerRect !== 0) {
+        const {
+          scrollTop
+        } = event.detail
+        const headerHeight = headerRect.height
+        if (scrollTop >= headerHeight) {
+          dataUtil.setDiffData(this, {
+            showHeaderBoxShadow: true
+          })
+        } else {
+          dataUtil.setDiffData(this, {
+            showHeaderBoxShadow: false
+          })
+        }
+      }
+
     }
   },
 

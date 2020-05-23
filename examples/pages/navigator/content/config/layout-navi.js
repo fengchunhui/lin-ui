@@ -40,6 +40,11 @@ const layoutNaviConfigs = [
     title: 'Collapse',
     desc: '折叠面板',
     componentsPath: '/pages/components/layout/pages/collapse/index'
+  }, {
+    icon: '/images/component/album.png',
+    title: 'NavigationBar',
+    desc: '导航栏',
+    componentsPath: '/pages/components/layout/pages/navigation-bar/index'
   }
 ]
 

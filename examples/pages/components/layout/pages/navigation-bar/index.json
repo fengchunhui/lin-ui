@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "l-navigation-bar":"/dist/navigation-bar/index"
+  },
+  "navigationStyle":"custom",
+  "navigationBarTextStyle":"white"
+}

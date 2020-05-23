@@ -1,0 +1,51 @@
+<view class="container" style="padding-top: {{paddingTop?titleBarHeight+statusBarHeight:'0'}}px">
+  <!--导航栏-->
+  <cover-view class="navigation-bar" style="background-color: {{navigationBarColor}};">
+    <!--状态栏-->
+    <cover-view
+      class="status-bar"
+      style="height: {{statusBarHeight}}px;background-color: {{statusBarColor}};"
+    ></cover-view>
+
+    <!--标题栏-->
+    <cover-view
+      class="title-bar"
+      style="height: {{titleBarHeight+4}}px;background-color: {{titleBarColor}};"
+    >
+      <cover-view class="title l-title-class" style="color: {{titleColor}};">{{title}}</cover-view>
+    </cover-view>
+
+    <!--胶囊按钮-->
+    <cover-view
+      wx:if="{{!hiddenCapsuleButton}}"
+      class="capsule-button"
+      style="border-color: rgba({{capsuleButtonColor==='black'?'0,0,0,0.1':'255,255,255,0.25'}});background-color: rgba({{capsuleButtonColor==='black'?'255,255,255,0.6':'0,0,0,0.15'}});width: {{capsuleButtonInfo.width}}px;height: {{capsuleButtonInfo.height}}px;left: {{capsuleButtonInfo.left}}px;top: {{capsuleButtonInfo.top}}px;"
+    >
+      <!--左侧按钮-->
+      <cover-view catch:tap="onTapLeftButton"
+                  catch:longpress="onLongPressLeftButton"
+                  hover-class="icon-wrapper-hover-{{capsuleButtonColor}}"
+                  class="icon-wrapper"
+                  style="width: {{capsuleButtonInfo.width/2}}px;height: {{capsuleButtonInfo.height}}px;">
+        <cover-image class="icon-left" src="icons/capsule-left-{{capsuleButtonColor}}.png"></cover-image>
+      </cover-view>
+
+      <!--分割线-->
+      <cover-view class="line"></cover-view>
+
+      <!--右侧按钮-->
+      <cover-view catch:tap="onTapRightButton"
+                  catch:longpress="onLongPressRightButton"
+                  hover-class="icon-wrapper-hover-{{capsuleButtonColor}}"
+                  class="icon-wrapper"
+                  style="width: {{capsuleButtonInfo.width/2}}px;height: {{capsuleButtonInfo.height}}px;">
+        <cover-image class="icon-right" src="icons/capsule-right-{{capsuleButtonColor}}.png"></cover-image>
+      </cover-view>
+    </cover-view>
+
+  </cover-view>
+
+  <view class="content-container">
+    <slot></slot>
+  </view>
+</view>

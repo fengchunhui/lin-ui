@@ -6,29 +6,20 @@ Component({
    * 组件的属性列表
    */
   behaviors: [zIndex, validator],
-  externalClasses: ['l-bg-class', 'l-panel-class', '1-class'],
+  externalClasses: ['l-bg-class','l-panel-class','l-class'],
   properties: {
     // 显示与隐藏
     show: {
       type: Boolean,
       value: false
     },
-    // 动画效果的显示和隐藏 --- 该属性更名为 transition
+    // 动画效果的显示和隐藏
     animation: {
       type: Boolean,
       value: true
     },
-    transition: {
-      type: Boolean,
-      value: true
-    },
-    // slot的位置 --- 该属性更名为 direction
+    // slot的位置
     contentAlign: {
-      type: String,
-      value: '',
-      options: ['', 'top', 'right', 'left', 'bottom', 'center']
-    },
-    direction: {
       type: String,
       value: 'center',
       options: ['top', 'right', 'left', 'bottom', 'center']
@@ -37,10 +28,6 @@ Component({
     locked: {
       type: Boolean,
       value: false
-    },
-    opacity: {
-      type: Number,
-      value: 0.4
     }
   },
 
